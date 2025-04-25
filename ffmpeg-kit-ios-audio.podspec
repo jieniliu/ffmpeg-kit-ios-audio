@@ -20,8 +20,7 @@ Pod::Spec.new do |s|
 
   s.prepare_command = <<-CMD
     unzip ffmpeg-kit-ios-audio-6.0.xcframework.zip
-    cd $(ls -d */ | grep ffmpeg-kit | head -n 1)
-    mv *.xcframework ../
+    find . -name "*.xcframework" -maxdepth 3 -exec mv {} . \;
   CMD
 
   # 系统依赖库
