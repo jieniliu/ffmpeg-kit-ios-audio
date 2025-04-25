@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.static_framework = true
   
   # 关键部分:使用Release URL
-  s.source       = { :http => "http://10.1.1.252:3000/jieni/ffmpeg-kit-ios-audio/src/tag/6.0/ffmpeg-kit-ios-audio-6.0.xcframework.zip" }
+  s.source       = { :http => "http://10.1.1.252:3000/jieni/ffmpeg-kit-ios-audio/raw/tag/6.0/ffmpeg-kit-ios-audio-6.0.xcframework.zip" }
   
   # 系统依赖库
   s.libraries = [
