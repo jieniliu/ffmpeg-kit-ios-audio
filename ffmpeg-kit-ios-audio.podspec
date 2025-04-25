@@ -12,6 +12,9 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.static_framework = true
   
+  # 修改：使用preserve_paths确保文件结构完整保留
+  s.preserve_paths = "**/*"
+  
   # 关键部分:使用Release URL
   s.source       = { :http => "https://github.com/jieniliu/ffmpeg-kit-ios-audio/releases/download/6.0/ffmpeg-kit-ios-audio-6.0.xcframework.zip" }
   
@@ -31,15 +34,20 @@ Pod::Spec.new do |s|
     "VideoToolbox"
   ]
   
-  # 指定要安装的框架
+  # 指定要安装的框架 - 根据您ZIP的实际结构指定正确路径
+  # 如果您的ZIP文件解压缩后包含一个文件夹，请在路径前加上该文件夹名称
   s.vendored_frameworks = [
-    "ffmpegkit.xcframework",
-    "libavcodec.xcframework",
-    "libavdevice.xcframework",
-    "libavfilter.xcframework",
-    "libavformat.xcframework",
-    "libavutil.xcframework",
-    "libswresample.xcframework",
-    "libswscale.xcframework"
+    "*/ffmpegkit.xcframework",
+    "*/libavcodec.xcframework",
+    "*/libavdevice.xcframework", 
+    "*/libavfilter.xcframework",
+    "*/libavformat.xcframework",
+    "*/libavutil.xcframework",
+    "*/libswresample.xcframework",
+    "*/libswscale.xcframework"
   ]
+  
+  # 添加：确保ZIP文件内容结构完整
+  s.pod_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
+  s.user_target_xcconfig = { 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'arm64' }
 end
