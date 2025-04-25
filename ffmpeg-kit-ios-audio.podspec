@@ -18,6 +18,12 @@ Pod::Spec.new do |s|
   # 关键部分:使用Release URL
   s.source       = { :http => "https://github.com/jieniliu/ffmpeg-kit-ios-audio/releases/download/6.0/ffmpeg-kit-ios-audio-6.0.xcframework.zip" }
 
+  s.prepare_command = <<-CMD
+    unzip ffmpeg-kit-ios-audio-6.0.xcframework.zip
+    cd $(ls -d */ | grep ffmpeg-kit | head -n 1)
+    mv *.xcframework ../
+  CMD
+
   # 系统依赖库
   s.libraries = [
     "z",
