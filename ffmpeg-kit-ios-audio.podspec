@@ -1,5 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "ffmpeg-kit-ios-audio"
+  s.module_name  = "ffmpegkit"
   s.version      = "6.0"
   s.summary      = "FFmpeg Kit iOS Audio for iOS applications"
   s.description  = "FFmpeg Kit iOS Audio includes FFmpeg with audio related features and libraries enabled."
