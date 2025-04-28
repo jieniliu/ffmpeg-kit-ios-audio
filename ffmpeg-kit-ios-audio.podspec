@@ -4,34 +4,25 @@ Pod::Spec.new do |s|
   s.version      = "6.0"
   s.summary      = "FFmpeg Kit iOS Audio for iOS applications"
   s.description  = "FFmpeg Kit iOS Audio includes FFmpeg with audio related features and libraries enabled."
-  s.homepage     = "http://10.1.1.252:3000/jieni/ffmpeg-kit-ios-audio"
+  s.homepage     = "https://github.com/jieniliu/ffmpeg-kit-ios-audio"
   s.license      = { :type => "LGPL-3.0", :file => "LICENSE" }
   s.author       = { "Your Name" => "your.email@example.com" }
-  
+
   s.platform     = :ios, "12.1"
   s.requires_arc = true
   s.static_framework = true
-  
-  # 关键部分:使用Release URL
-  s.source       = { :http => "http://10.1.1.252:3000/jieni/ffmpeg-kit-ios-audio/raw/tag/6.0/ffmpeg-kit-ios-audio-6.0.xcframework.zip" }
-  
-  # 系统依赖库
-  s.libraries = [
-    "z",
-    "bz2",
-    "c++",
-    "iconv"
-  ]
-  
-  # 系统框架
-  s.frameworks = [
-    "AudioToolbox",
-    "AVFoundation",
-    "CoreMedia",
-    "VideoToolbox"
-  ]
-  
-  # 指定要安装的框架
+
+  s.source       = { :http => "https://github.com/jieniliu/ffmpeg-kit-ios-audio/releases/download/6.0/ffmpeg-kit-ios-audio-6.0.xcframework.zip" }
+
+  s.prepare_command = <<-CMD
+    unzip ffmpeg-kit-ios-audio-6.0.xcframework.zip
+    find . -name "*.xcframework" -maxdepth 3 -exec mv {} . \\;
+  CMD
+
+  s.libraries = ["z", "bz2", "c++", "iconv"]
+
+  s.frameworks = ["AudioToolbox", "AVFoundation", "CoreMedia", "VideoToolbox"]
+
   s.vendored_frameworks = [
     "ffmpegkit.xcframework",
     "libavcodec.xcframework",
