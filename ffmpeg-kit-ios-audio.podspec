@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
 
   s.prepare_command = <<-CMD
     unzip ffmpeg-kit-ios-audio-6.0.xcframework.zip
-    find . -name "*.xcframework" -maxdepth 3 -exec mv {} . \\;
+    find . -maxdepth 3 -name "*.xcframework" -exec mv {} . \;
   CMD
 
   s.libraries = ["z", "bz2", "c++", "iconv"]
